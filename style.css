@@ -1,0 +1,64 @@
+* {
+    font-family: "Noto Sans", sans-serif;
+}
+body {
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+canvas {
+    z-index: 0;
+    cursor: crosshair;
+}
+.menu {
+    background-color: #000000;
+    color: #ffffff;
+    top: 30%;
+    left: 40%;
+    right: 40%;
+    bottom: 30%;
+    text-align: center;
+    z-index: 3;
+    position: absolute;
+    overflow-y: auto;
+}
+.controls {
+    background-color: #000000;
+    color: #ffffff;
+    top: 0%;
+    left: 20%;
+    right: 20%;
+    bottom: 95%;
+    text-align: left;
+    z-index: 3;
+    position: absolute;
+}
+.button {
+    background-color: #ffffff;
+    color: #000000;
+    font-weight: 800;
+    text-align: center;
+    cursor: pointer;
+    z-index: 1;
+    position: absolute;
+}
+.menubutton {
+    top: 1%;
+    left: 1%;
+    right: 96%;
+    bottom: 96%;
+}
+.aboutbutton {
+    top: 1%;
+    left: 95%;
+    right: 1%;
+    bottom: 96%;
+}
+input[type=range] {
+    width: 90%;
+}
+#mouseinfo {
+    position: fixed;
+    pointer-events: none;
+    z-index: 1;
+}

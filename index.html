@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Nuclear Reactor Simulation</title>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+    <body>
+        <div id="mouseInfo" style="position: fixed; background-color: #ffffff;">...</div>
+        <canvas id="simcanvas"></canvas>
+        <div class="button menubutton" onclick="toggleMenu()">Menu</div>
+        <div class="button aboutbutton" onclick="toggleAbout()">About</div>
+        <div class="menu" id="menudiv" style="display: none;">
+            Click "Menu" to close
+            <hr>
+            Horizontal Elements: <span id="horit">22</span><br>
+            <input type="range" id="horie" min="2" max="51" value="23" oninput="document.getElementById('horit').innerHTML = this.value-1; document.getElementById('totalelem').innerHTML = (this.value-1)*(document.getElementById('verte').value-1); runSimulation()"><br>
+            Vertical Elements: <span id="vertt">10</span><br>
+            <input type="range" id="verte"  min="2" max="11" value="11" oninput="document.getElementById('vertt').innerHTML = this.value-1; document.getElementById('totalelem').innerHTML = (this.value-1)*(document.getElementById('horie').value-1); runSimulation()"><br>
+            <span id="totalelem">220</span> total elements.
+            <hr>
+            Control Rod Spacing: <span id="rodst">2</span>
+            <input type="range" id="rodspace" min="1" max="50" value="2" oninput="document.getElementById('rodst').innerHTML = this.value; runSimulation()">
+            <hr>
+            Framerate: <input type="number" id="framerate" min="1" max="60" value="20" oninput="clearInterval(window.simint); window.simint = setInterval(runSimulation, 1000/this.value);">
+        </div>
+        <div class="menu" id="aboutdiv" style="display: none;">
+            Click "About" to close
+            <hr>
+            "Nuclear Reactor Simulation"<br>
+            by Aidan B @aidanbxyz<br>
+            <hr>
+            Click on a control rod's path to change it's insertion
+            <hr>
+            TODO<br>
+            <ul>
+                <li>Particle/Control Rod Collision</li>
+                <li>Particle/Element Collision Causes Particle Release</li>
+                <li>OPTIMIZE!!! (Too many for loops and redundant checks)</li>
+            </ul>
+            <hr>
+            Resources and References:<br>
+            "Noto Sans" font by Google Fonts
+        </div>
+        <div class="controls" id="controls">
+            not done &lt;3 - - - See "About" for a TODO<br>
+            <button onclick="clearInterval(window.simint); this.innerHTML = 'reload the page to restart'">EMERGENCY STOP</button>
+        </div>
+    </body>
+    <script src="./simulation.js"></script>
+    <script>
+        function toggleMenu(){if(document.getElementById('menudiv').style.display=='none'){document.getElementById('menudiv').style.display='block'}else{document.getElementById('menudiv').style.display='none'}}
+        function toggleAbout(){if(document.getElementById('aboutdiv').style.display=='none'){document.getElementById('aboutdiv').style.display='block'}else{document.getElementById('aboutdiv').style.display='none'}}
+    </script>
+</html>
